@@ -225,7 +225,13 @@ abstract class Shape{
  class RightTriangle extends Shape{
  	private double base, height, hypotenuse, area, perimeter;
 
-
+ 	//constructor
+ 	public RightTriangle(int id, int xLoc, int yLoc, double base, double height){
+ 		super(id, xLoc, yLoc);
+ 		this.base = base;
+ 		this.height = height;
+	
+ 	}
 
  	//getBase
  	public double getBase(){
@@ -265,23 +271,10 @@ abstract class Shape{
  		this.hypotenuse = this.hypotenuse*scaleFactor;
  	}
 
-
- 	//constructor
- 	public RightTriangle(int id, int xLoc, int yLoc, double base, double height){
- 		super(id, xLoc, yLoc);
- 		this.base = base;
- 		this.height = height;
-	
- 	}
-
-
-
  }
 
  class Circle extends Shape{
  	private double radius, area, perimeter;
-
-
 
  	//constructor
  	public Circle(int id, int xLoc, int yLoc, double radius){
@@ -329,39 +322,46 @@ abstract class Shape{
  class Rectangle extends Shape{
  	private double length, breadth;
 
- 
+ 	//constructor
  	public Rectangle(int id, int xLoc, int yLoc, double length, double breadth){
  		super(id, xLoc, yLoc);
  		this.length = length;
  		this.breadth = breadth;
  	}
 
+ 	//getLength method
  	public double getLength(){
  		return length;
  	}
 
+ 	//getBreadth method
  	public double getBreadth(){
  		return breadth;
  	}
 
+ 	//setLength method
  	public void setLength(double length){
  		this.length = length;
  	}
 
+ 	//setBreadth method
  	public void setBreadth(double breadth){
  		this.breadth = breadth;
  	}
 
+ 	//getArea
  	@Override
  	double getArea(){
  		return length*breadth;
  	}
 
+ 	//getPerimeter
  	@Override
  	double getPerimeter(){
  		return 2*(length+breadth);
  	}
 
+ 	//setScale
  	@Override
  	void scaleShape(){
  		this.length = this.length*scaleFactor;

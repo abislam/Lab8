@@ -6,7 +6,7 @@ import java.util.Scanner;
  		Scanner scan = new Scanner(System.in);
  		double height, base;
  		int count = 0;
- 		int rtID = 0;
+ 		int id = 0;
  		int userChoice, rtIndex, xLoc, yLoc;
  		char exitChoice;
 
@@ -42,8 +42,8 @@ import java.util.Scanner;
 	 					System.out.println("Enter the Y coordinate: ");
 	 					yLoc = scan.nextInt();
 
-	 					rt1[count++] = new RightTriangle(height, base, rtID, xLoc, yLoc);
-	 					rtID +=1;
+	 					rt1[count++] = new RightTriangle(height, base, id, xLoc, yLoc);
+	 					id +=1;
 	 				}else{
 	 					System.out.println("\nThe program has reached the max number of right triangles allowed.\n");
 	 				}
@@ -53,7 +53,7 @@ import java.util.Scanner;
  					System.out.println("Enter the Right Triangle ID: ");
  					rtIndex = scan.nextInt();
  					for(int i=0; i<count; i++){
- 						if(rt1[i].rtID == rtIndex){
+ 						if(rt1[i].id == rtIndex){
  							rt1[i] = rt1[count-1];
  							rt1[count-1] = null;
  							count--;
@@ -77,7 +77,7 @@ import java.util.Scanner;
  				case 4:
  					for(int i=0; i<count; i++){
 
- 						System.out.println("\nRight Triangle ID: " + rt1[i].rtID);
+ 						System.out.println("\nRight Triangle ID: " + rt1[i].id);
  						System.out.println("Right Triangle Height: " + rt1[i].getHeight());
  						System.out.println("Right Triangle Base: " + rt1[i].getBase());
  						System.out.println("Right Triangle Hypotenuse: " + rt1[i].getHypotenuse());
@@ -90,7 +90,7 @@ import java.util.Scanner;
  					System.out.println("Enter the Right Triangle ID: ");
  					rtIndex = scan.nextInt();
  					for(int i=0; i<count; i++){
- 						if(rt1[i].rtID == rtIndex){
+ 						if(rt1[i].id == rtIndex){
  							System.out.println("Enter the Right Triangle X coordinate: ");
  							xLoc = scan.nextInt();
  							rt1[i].setX(xLoc);
@@ -109,7 +109,7 @@ import java.util.Scanner;
  					System.out.println("Enter the Right Triangle ID: ");
  					rtIndex = scan.nextInt();
  					for(int i=0; i<count; i++){
- 						if(rt1[i].rtID == rtIndex){
+ 						if(rt1[i].id == rtIndex){
  							System.out.println("Enter the New Height for the Right Triangle: ");
  							height = scan.nextInt();
  							System.out.println("Enter the New Base for the Right Triangle: ");
@@ -132,7 +132,7 @@ import java.util.Scanner;
  				case 8:
  					for(int i=0; i<count; i++){
  						rt1[i].ScaleShape();
- 						System.out.println("Scaled Right Triangle " + rt1[i].rtID + "\n");
+ 						System.out.println("Scaled Right Triangle " + rt1[i].id + "\n");
  					}
  					break;
 
@@ -166,10 +166,55 @@ Implement a Shape constructor and update the RightTriangle constructor to call t
 Then add three abstract methods to Shape called getArea(), getPerimeter() and scaleShape(). 
  */
 
- class RightTriangle{
+abstract class Shape{
+	static double scaleFactor;
+	int id, xLoc, yLoc;
+
+	//setID
+	public void setID(int id){
+		this.id = id;
+	}
+
+	//setX
+ 	public void setX(int x){
+ 		this.xLoc = x;
+ 	}
+
+ 	//setY
+ 	public void setY(int y){
+ 		this.yLoc = y;
+ 	}
+
+ 	//setScaleFactor
+ 	public static void setScaleFactor(double scaleFactor){
+ 		Shape.scaleFactor = scaleFactor;
+ 	}
+
+ 	//getID
+ 	public int getID(){
+ 		return id;
+ 	}
+
+ 	//getX
+ 	public int getX(){
+ 		return xLoc;
+ 	}
+
+ 	//getY
+ 	public int getY(){
+ 		return yLoc;
+ 	}
+
+ 	//getScaleFactor
+ 	public double getScaleFactor(){
+ 		return scaleFactor;
+ 	}
+
+}
+
+ class RightTriangle extends Shape{
  	private double base, height, hypotenuse, area, perimeter;
- 	int rtID, xLoc, yLoc;
- 	static double scaleFactor;
+
 
  	//getBase
  	public double getBase(){
@@ -199,23 +244,6 @@ Then add three abstract methods to Shape called getArea(), getPerimeter() and sc
  		return perimeter;
  	}
 
- 	//setValues for base,height and calculate hypotenuse
- 	public void setValues(double newBase, double newHeight){
- 		this.base = newBase;
- 		this.height = newHeight;
- 		this.hypotenuse = getHypotenuse();
- 	}
-
- 	//setX
- 	public void setX(int x){
- 		this.xLoc = x;
- 	}
-
- 	//setY
- 	public void setY(int y){
- 		this.yLoc = y;
- 	}
-
  	//setScale
  	public void ScaleShape(){
  		this.height = this.height*scaleFactor;
@@ -223,11 +251,20 @@ Then add three abstract methods to Shape called getArea(), getPerimeter() and sc
  		this.hypotenuse = this.hypotenuse*scaleFactor;
  	}
 
+ 	//setValues for base,height and calculate hypotenuse
+ 	public void setValues(double newBase, double newHeight){
+ 		this.base = newBase;
+ 		this.height = newHeight;
+ 		this.hypotenuse = getHypotenuse();
+ 	}
+
+
+
  	//constructor
- 	public RightTriangle(double base, double height, int rtID, int xLoc, int yLoc){
+ 	public RightTriangle(double base, double height, int id, int xLoc, int yLoc){
  		this.base = base;
  		this.height = height;
- 		this.rtID = rtID;
+ 		this.id = id;
  		this.xLoc = xLoc;
  		this.yLoc = yLoc;		
  	}
@@ -236,7 +273,7 @@ Then add three abstract methods to Shape called getArea(), getPerimeter() and sc
 
  }
 
- class Circle{
+ class Circle extends Shape{
  	private double radius, area, perimeter;
 
 

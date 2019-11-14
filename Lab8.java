@@ -226,6 +226,7 @@ abstract class Shape{
  	private double base, height, hypotenuse, area, perimeter;
 
 
+
  	//getBase
  	public double getBase(){
  		return base;
@@ -280,6 +281,8 @@ abstract class Shape{
  class Circle extends Shape{
  	private double radius, area, perimeter;
 
+
+
  	//constructor
  	public Circle(int id, int xLoc, int yLoc, double radius){
  		super(id, xLoc, yLoc);
@@ -321,4 +324,47 @@ abstract class Shape{
 
  	
 
+ }
+
+ class Rectangle extends Shape{
+ 	private double length, breadth;
+
+ 
+ 	public Rectangle(int id, int xLoc, int yLoc, double length, double breadth){
+ 		super(id, xLoc, yLoc);
+ 		this.length = length;
+ 		this.breadth = breadth;
+ 	}
+
+ 	public double getLength(){
+ 		return length;
+ 	}
+
+ 	public double getBreadth(){
+ 		return breadth;
+ 	}
+
+ 	public void setLength(double length){
+ 		this.length = length;
+ 	}
+
+ 	public void setBreadth(double breadth){
+ 		this.breadth = breadth;
+ 	}
+
+ 	@Override
+ 	double getArea(){
+ 		return length*breadth;
+ 	}
+
+ 	@Override
+ 	double getPerimeter(){
+ 		return 2*(length+breadth);
+ 	}
+
+ 	@Override
+ 	void scaleShape(){
+ 		this.length = this.length*scaleFactor;
+ 		this.breadth = this.breadth*scaleFactor;
+ 	}
  }

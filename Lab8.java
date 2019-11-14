@@ -159,6 +159,13 @@ import java.util.Scanner;
  }
  
 
+ /*
+Create an abstract base class called Shape and move the static variable scaleFactor and the three instance variables id, xLoc and yLoc from RightTriangle 
+to Shape along with the get and set methods for those variables.  
+Implement a Shape constructor and update the RightTriangle constructor to call the Shape constructor for the variables moved to Shape. 
+Then add three abstract methods to Shape called getArea(), getPerimeter() and scaleShape(). 
+ */
+
  class RightTriangle{
  	private double base, height, hypotenuse, area, perimeter;
  	int rtID, xLoc, yLoc;

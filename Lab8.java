@@ -16,15 +16,16 @@ import java.util.Scanner;
  		boolean programDebug = true;
 
  		while(programRunner){
- 			System.out.println("\n1 - Enter a new right triangle \n");
- 			System.out.println("2 - Delete a right triangle \n");
- 			System.out.println("3 - Delete all right triangles \n");
- 			System.out.println("4 - Display all right triangle \n");
- 			System.out.println("5 - Move a triangle \n");
- 			System.out.println("6 - Resize a triangle \n");
- 			System.out.println("7 - Enter a scale factor \n");
- 			System.out.println("8 - Scale all triangles \n");
- 			System.out.println("9 - Exit program \n\n");
+ 			System.out.println("\n1 - Add a new circle \n");
+ 			System.out.println("2 - Add a new rectangle \n");
+ 			System.out.println("3 - Add a new right triangle \n");
+ 			System.out.println("4 - Delete a shape \n");
+ 			System.out.println("5 - Delete all shapes \n");
+ 			System.out.println("6 - Display all shapes \n");
+ 			System.out.println("7 - Move a shape \n");
+ 			System.out.println("8 - Enter a scale factor \n");
+ 			System.out.println("9 - Scale all shapes \n");
+ 			System.out.println("10 - Exit program \n\n");
  			System.out.println("Please choose an option: ");
 
  			userChoice = scan.nextInt();

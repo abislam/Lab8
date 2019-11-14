@@ -4,7 +4,7 @@ import java.util.Scanner;
  	public static void main(String[] args){
 
  		Scanner scan = new Scanner(System.in);
- 		double height, base;
+ 		double height, base, radius, length, breadth, scaleFactor;
  		int count = 0;
  		int id = 0;
  		int userChoice, rtIndex, xLoc, yLoc;
@@ -34,108 +34,131 @@ import java.util.Scanner;
 
  				case 1: 
  					if(count<10){
-	 					System.out.println("Enter right triangle height: ");
-	 					height = scan.nextDouble();
-	 					System.out.println("Enter right triangle base: ");
-	 					base = scan.nextDouble();
+	 					System.out.println("Enter Circle Radius ");
+	 					radius = scan.nextDouble();
 	 					System.out.println("Enter the X coordinate: ");
 	 					xLoc = scan.nextInt();
 	 					System.out.println("Enter the Y coordinate: ");
 	 					yLoc = scan.nextInt();
-
-	 					
+	 					rt1[count++] = new Circle(id, xLoc, yLoc, radius);
 	 					id +=1;
-	 					rt1[count++] = new RightTriangle(id, xLoc, yLoc, height, base);
 	 				}else{
 	 					System.out.println("\nThe program has reached the max number of right triangles allowed.\n");
 	 				}
 	 				break;
 
-	 			case 2:
- 					System.out.println("Enter the Right Triangle ID: ");
+	 			 case 2: 
+ 					if(count<10){
+	 					System.out.println("Enter Rectangle Length ");
+	 					length = scan.nextDouble();
+	 					System.out.println("Enter Rectangle Breadth ");
+	 					breadth = scan.nextDouble();
+	 					System.out.println("Enter the X coordinate: ");
+	 					xLoc = scan.nextInt();
+	 					System.out.println("Enter the Y coordinate: ");
+	 					yLoc = scan.nextInt();
+	 					rt1[count++] = new Rectangle(id, xLoc, yLoc, length, breadth);
+	 					id +=1;
+	 				}else{
+	 					System.out.println("\nThe program has reached the max number of right triangles allowed.\n");
+	 				}
+	 				break;
+
+ 				case 3: 
+ 					if(count<10){
+	 					System.out.println("Enter Right Triangle Base ");
+	 					base = scan.nextDouble();
+	 					System.out.println("Enter Right Triangle Height ");
+	 					height = scan.nextDouble();
+	 					System.out.println("Enter the X coordinate: ");
+	 					xLoc = scan.nextInt();
+	 					System.out.println("Enter the Y coordinate: ");
+	 					yLoc = scan.nextInt();
+	 					rt1[count++] = new RightTriangle(id, xLoc, yLoc, base, height);
+	 					id +=1;
+	 				}else{
+	 					System.out.println("\nThe program has reached the max number of right triangles allowed.\n");
+	 				}
+	 				break;
+
+	 				//this should be case 4
+	 			case 4:
+ 					System.out.println("Enter the Shape ID: ");
  					rtIndex = scan.nextInt();
  					for(int i=0; i<count; i++){
  						if(rt1[i].id == rtIndex){
  							rt1[i] = rt1[count-1];
  							rt1[count-1] = null;
  							count--;
- 							System.out.println("\nRight Triangle with ID " + rtIndex + " has been deleted\n");
+ 							System.out.println("\nShape with ID " + rtIndex + " has been deleted\n");
  							programDebug = false;
  						}
  					}
  					if(programDebug){
- 						System.out.println("\nInvalid Right Triangle ID\n");
+ 						System.out.println("\nInvalid Shape ID\n");
  					}
  					break;
 
- 				case 3: 
+ 					//this should be case 5
+ 				case 5: 
  					for(int i=0; i<count; i++){
  						rt1[i] = null;
  					}
  					count = 0;
- 					System.out.println("\nAll right triangles have been deleted.\n");
+ 					System.out.println("\nAll shapes have been deleted.\n");
  					break;
 
- 				case 4:
+ 					//this should be case 6
+ 				case 6:
  					for(int i=0; i<count; i++){
 
- 						System.out.println("\nRight Triangle ID: " + rt1[i].id);
- 						System.out.println("Right Triangle X coordinate: " + rt1[i].xLoc);
- 						System.out.println("Right Triangle Y coordinate: " + rt1[i].yLoc + "\n");
+ 						System.out.println("\nShape ID: " + rt1[i].id);
+ 						System.out.println("\nShape Area: " + rt1[i].getArea());
+ 						System.out.println("\nShape Perimeter: " + rt1[i].getPerimeter());
+ 						System.out.println("Shape X coordinate: " + rt1[i].xLoc);
+ 						System.out.println("Shape Y coordinate: " + rt1[i].yLoc + "\n");
  					}
  					break;
 
- 				case 5:
- 					System.out.println("Enter the Right Triangle ID: ");
+ 					//this should be case 7
+ 				case 7:
+ 					System.out.println("Enter the Shape ID: ");
  					rtIndex = scan.nextInt();
  					for(int i=0; i<count; i++){
  						if(rt1[i].id == rtIndex){
- 							System.out.println("Enter the Right Triangle X coordinate: ");
+ 							System.out.println("Enter the Shape X coordinate: ");
  							xLoc = scan.nextInt();
  							rt1[i].setX(xLoc);
- 							System.out.println("Enter the Right Triangle Y coordinate: ");
+ 							System.out.println("Enter the Shape Y coordinate: ");
  							yLoc = scan.nextInt();
  							rt1[i].setY(yLoc);
  							programDebug = false;
  						}
  					}
  					if(programDebug){
- 							System.out.println("\nInvalid Right Triangle ID\n");
+ 							System.out.println("\nInvalid Shape ID\n");
  					}
  					break;
 
- 				case 6:
- 					System.out.println("Enter the Right Triangle ID: ");
- 					rtIndex = scan.nextInt();
- 					for(int i=0; i<count; i++){
- 						if(rt1[i].id == rtIndex){
- 							System.out.println("Enter the New Height for the Right Triangle: ");
- 							height = scan.nextInt();
- 							System.out.println("Enter the New Base for the Right Triangle: ");
- 							base = scan.nextInt();
- 							//rt1[i].setValues(base, height);
- 							programDebug = false;
- 						}
- 					}
- 					if(programDebug){
- 						System.out.println("\nInvalid Right Triangle ID\n");
- 					}
- 					break;
 
- 				case 7:
- 					System.out.println("Enter a new Scaling Factor value: ");
- 					RightTriangle.scaleFactor = scan.nextDouble();
- 					System.out.println("\nNew Scale Factor Value: " + RightTriangle.scaleFactor + "\n");
- 					break;
-
+ 					////this should be case 8
  				case 8:
+ 					System.out.println("Enter a new Scaling Factor value: ");
+ 					scaleFactor = scan.nextDouble();
+ 					Shape.setScaleFactor(scaleFactor);
+ 					System.out.println("\nNew Scale Factor Value: " + Shape.scaleFactor + "\n");
+ 					break;
+
+ 					//this should be case 9
+ 				case 9:
  					for(int i=0; i<count; i++){
  						rt1[i].scaleShape();
- 						System.out.println("Scaled Right Triangle " + rt1[i].id + "\n");
+ 						System.out.println("Scaled Shape " + rt1[i].id + "\n");
  					}
  					break;
 
- 				case 9:
+ 					//this should be case 10
+ 				case 10:
  					System.out.println("Please confirm that you want to exit the program with (y/n): ");
  					exitChoice = scan.next().charAt(0);
  					if(exitChoice == 'y' || exitChoice == 'Y'){
@@ -164,7 +187,7 @@ to Shape along with the get and set methods for those variables.
 Implement a Shape constructor and update the RightTriangle constructor to call the Shape constructor for the variables moved to Shape. 
 Then add three abstract methods to Shape called getArea(), getPerimeter() and scaleShape(). 
  */
-
+//-----------------------------------------------------------------------------------------------------------------------------
 abstract class Shape{
 	static double scaleFactor;
 	int id, xLoc, yLoc;
@@ -222,7 +245,7 @@ abstract class Shape{
  	abstract void scaleShape();
 
 }
-
+//-----------------------------------------------------------------------------------------------------------------------------
  class RightTriangle extends Shape{
  	private double base, height, hypotenuse, area, perimeter;
 
@@ -273,7 +296,7 @@ abstract class Shape{
  	}
 
  }
-
+//-----------------------------------------------------------------------------------------------------------------------------
  class Circle extends Shape{
  	private double radius, area, perimeter;
 
@@ -319,7 +342,7 @@ abstract class Shape{
  	
 
  }
-
+//-----------------------------------------------------------------------------------------------------------------------------
  class Rectangle extends Shape{
  	private double length, breadth;
 
